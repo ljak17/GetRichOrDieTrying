@@ -1,0 +1,19 @@
+Noteringar från 24/11
+
+Sprint Backup
+
+Urval från user stories
+"Videopoker Skapa en draw 5" - ca 80p(efter gemensam omröstning)
+
+Vad behövs och vilke tidsåtgång ca i tim ?
+
+Kortlek - 1h
+Visa kort/ hand -1h
+Shuffle -1h
+Byt kort 1 gång -2h
+Värde på kort -2h
+Regler - 8h
+Satsa/Betta -4h
+Grafisk tillämpning - 16h
+JUnit test -16h
+
