@@ -17,6 +17,7 @@ public class Card {
 		return suit;
 	}
 	
+	@Override
 	public String toString() {
 		return Integer.toString(value) + suit.name().charAt(0);
 	}
