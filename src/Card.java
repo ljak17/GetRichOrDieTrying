@@ -20,17 +20,29 @@ public class Card {
 	public String toString() {
 		return Integer.toString(value) + suit.name().charAt(0);
 	}
-	
-	public boolean equals(Card card) {
-		if (card == null) {
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((suit == null) ? 0 : suit.hashCode());
+		result = prime * result + value;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
 			return false;
-		}
-		if (this.value != card.getValue()) {
+		if (getClass() != obj.getClass())
 			return false;
-		}
-		if (this.suit != card.getSuit()) {
+		Card other = (Card) obj;
+		if (suit != other.suit)
 			return false;
-		}
+		if (value != other.value)
+			return false;
 		return true;
 	}
 
