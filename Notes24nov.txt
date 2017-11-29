@@ -1,4 +1,4 @@
-Noteringar från 24/11
+﻿Noteringar från 24/11
 
 Sprint Backup
 
@@ -16,4 +16,16 @@ Regler - 8h
 Satsa/Betta -4h
 Grafisk tillämpning - 16h
 JUnit test -16h
+
+
+Scrum mötet 29/11
+
+Detta är gjort sen sist
+Uml- evt förbättring på den
+Nu har vi Shuffle, kortlek klara
+Klasserna Suit, deck, Card är upplagda på GitHub
+
+Daniel fixar JUnit tester
+Simon och Lars parprogrammerar följande : Visa kort, Hand, byt kort
+Arasto och Liselotte fixar regler/värden till bettingen
 
