@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -36,4 +37,17 @@ public class VideoPoker {
 		System.out.println(hand);
 		scan.close();
 	}
+=======
+
+public class VideoPoker {
+
+	public static void main(String[] args) {
+
+	}
+	
+	public PokerHand getPokerHand(List<Card> hand) {
+		if ()
+	}
+
+>>>>>>> a5a91cddd3e4a08b4e2e09d938fd4f09abef0558
 }
