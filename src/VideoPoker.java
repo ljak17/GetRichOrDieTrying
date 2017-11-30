@@ -9,7 +9,7 @@ public class VideoPoker {
 	public static void main(String[] args) {
 		Deck deck = new Deck();
 		deck.shuffle();
-		kasta(hand(deck));
+		kasta(hand(deck), deck);
 		
 	}
 	public static List<Card> hand(Deck deck) {
@@ -21,7 +21,7 @@ public class VideoPoker {
 		System.out.println(hand);
 		return hand;
 	}
-	public static void kasta(List<Card> hand) {
+	public static List<Card> kasta(List<Card> hand, Deck d) {
 		System.out.println("Vilka kort vill du slänga, komma(',') mellan numrena");
 		Scanner scan = new Scanner(System.in);
 		String vilka = scan.next();
@@ -31,10 +31,17 @@ public class VideoPoker {
 		for(int i = 0; i<items.size(); i++) {
 			int temp = Integer.parseInt(items.get(i));
 			System.out.println("Du har slängt " + hand.get(temp-1));
-			hand.remove(temp-1);
+			hand.remove(temp-1);		
 		}
-		System.out.println(hand);
+		
+		for(int i = 0; i < items.size();i++) {
+			hand.add(d.draw());
+		}
+		
+		
+		System.out.println("Nu är din hand" +hand);
 		scan.close();
+		return hand;
 	}
 
 }
