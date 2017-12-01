@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class VideoPoker {
-	public static void main(String[] args) {
+	public void playGame() {
 		Deck deck = new Deck();
 		deck.shuffle();
 		kasta(hand(deck), deck);
@@ -39,7 +39,7 @@ public class VideoPoker {
 		}
 		
 		
-		System.out.println("Nu är din hand" +hand);
+		System.out.println("Nu är din hand" + hand);
 		scan.close();
 		return hand;
 	}
