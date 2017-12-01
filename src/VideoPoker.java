@@ -17,13 +17,28 @@ public class VideoPoker {
 		deck.shuffle();
 		kasta(hand(deck), deck);
 
-		// Bara för att testa, kan vara userinput namn sen
-		SaveScore ss = new SaveScore("pelle");
-		ss.writeToFile(123);
-		System.out.println(ss.readFromFile());
+		saveToFile(startingBalance);
+		
 
 	}
 
+	public void saveToFile(int currentCredits) throws IOException {
+		System.out.println("Vill du spara dina krediter - y/n");
+		Scanner scan = new Scanner(System.in);
+		String svar = scan.next();
+		if(svar.equals("y")) {
+			System.out.println("Vad heter du?");
+			scan.nextLine();
+			String namn = scan.nextLine();
+			SaveScore ss = new SaveScore(namn);
+			ss.writeToFile(currentCredits);
+			System.out.println("TEST: input från fil" + ss.readFromFile());
+		}
+		else {
+			System.out.println("ha de gött änna");
+		}
+	}
+	
 	public static List<Card> hand(Deck deck) {
 		List<Card> hand = new ArrayList<>();
 
@@ -52,7 +67,6 @@ public class VideoPoker {
 		}
 
 		System.out.println("Nu är din hand" + hand);
-		scan.close();
 		return hand;
 	}
 }
