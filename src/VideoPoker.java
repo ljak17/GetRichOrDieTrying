@@ -37,7 +37,7 @@ public class VideoPoker {
 	public static List<Card> kasta(List<Card> hand, Deck d) {
 		System.out.println("Vilka kort vill du slänga, komma(',') mellan numrena");
 		Scanner scan = new Scanner(System.in);
-		String vilka = scan.next();
+		String vilka = scan.next();;
 		List<String> items = Arrays.asList(vilka.split(","));
 
 		Collections.sort(items, Collections.reverseOrder());
