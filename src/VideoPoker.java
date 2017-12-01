@@ -1,4 +1,4 @@
-import java.lang.reflect.Array;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -6,12 +6,22 @@ import java.util.List;
 import java.util.Scanner;
 
 public class VideoPoker {
-	public void playGame() {
+
+	public void playGame() throws IOException{
+
+	
+
 		Deck deck = new Deck();
 		deck.shuffle();
 		kasta(hand(deck), deck);
 		
+		//Bara för att testa, kan vara userinput namn sen
+		SaveScore ss = new SaveScore("pelle");
+		ss.writeToFile(123);
+		System.out.println(ss.readFromFile());
+		
 	}
+		
 	public static List<Card> hand(Deck deck) {
 		List<Card> hand = new ArrayList<>();
 		
@@ -43,5 +53,5 @@ public class VideoPoker {
 		scan.close();
 		return hand;
 	}
-
 }
+
