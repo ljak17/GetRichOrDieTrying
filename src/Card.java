@@ -1,5 +1,5 @@
 
-public class Card {
+public class Card implements Comparable<Card> {
 	
 	private int value;
 	private Suit suit;
@@ -32,19 +32,35 @@ public class Card {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
+	public boolean equals(Object object) {
+		if (this == object)
 			return true;
-		if (obj == null)
+		if (object == null)
 			return false;
-		if (getClass() != obj.getClass())
+		if (getClass() != object.getClass())
 			return false;
-		Card other = (Card) obj;
+		Card other = (Card) object;
 		if (suit != other.suit)
 			return false;
 		if (value != other.value)
 			return false;
 		return true;
+	}
+
+	@Override
+	public int compareTo(Card card) {
+		if (card == null) {
+			throw new NullPointerException();
+		}
+		if (getClass() != card.getClass()) {
+			throw new ClassCastException();
+		}
+		if (value < card.value) {
+			return -1;
+		} else if (value > card.value) {
+			return 1;
+		}
+		return 0;
 	}
 
 }
