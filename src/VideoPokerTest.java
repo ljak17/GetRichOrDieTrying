@@ -67,12 +67,14 @@ class VideoPokerTest {
 	void testCardConstructor() {
 		Card card;
 		for (Suit suit : Suit.values()) {
-			for (int i = 1; i < 14; i++) {
-				card = new Card(i, suit);
-				assertEquals(i, card.getValue(), "card.getValue returns correct value");
+			for (int value = 1; value < 14; value++) {
+				card = new Card(value, suit);
+				assertEquals(value, card.getValue(), "card.getValue returns correct value");
 				assertEquals(suit, card.getSuit(), "card.getSuit returns correct suit");
 			}
 		}
 	}
-
+	
+	// Hand tests -----------------------
+	
 }
