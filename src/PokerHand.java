@@ -9,7 +9,6 @@ public enum PokerHand {
 	STRAIGHT,
 	THREE_OF_A_KIND,
 	TWO_PAIR,
-	ONE_PAIR,
-	HIGH_CARD;
+	ROYAL_PAIR;
 
 }
