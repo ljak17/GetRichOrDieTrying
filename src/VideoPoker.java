@@ -11,17 +11,34 @@ public class VideoPoker {
 	private int startingBalance = 1000;
 	private final Deck deck = new Deck();
 	private final Hand hand = new Hand();
+	private boolean spela = true;
 
 	public void playGame() throws IOException {
 		startingBalance += readFromFile();
-		System.out.println("Du har " + startingBalance + " pengar nu");
-		int currentBet = bet(startingBalance);
-		startingBalance -= currentBet;
-		System.out.println("Du har " + startingBalance + " pengar kvar");
-		deck.shuffle();
-		giv();
-		kasta();
+
+		while (spela) {
+			System.out.println("Du har " + startingBalance + " pengar nu");
+			int currentBet = bet(startingBalance);
+			startingBalance -= currentBet;
+			System.out.println("Du har " + startingBalance + " pengar kvar");
+			deck.shuffle();
+			giv();
+			kasta();
+			playAgain();
+		}
 		saveToFile(startingBalance);
+	}
+
+	private void playAgain() {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Vill du spela igen? j/n");
+		String svar = scan.nextLine();
+		if (svar.equals("j")) {
+			spela = true;
+		}
+		else {
+			spela = false;
+		}
 	}
 
 	public int bet(int currentCredits) {
@@ -41,10 +58,10 @@ public class VideoPoker {
 	}
 
 	public int readFromFile() throws FileNotFoundException {
-		System.out.println("Har du en sparfil?");
+		System.out.println("Har du en sparfil? j/n");
 		Scanner scan = new Scanner(System.in);
 		String svar = scan.nextLine();
-		if (svar.equals("y")) {
+		if (svar.equals("j")) {
 			SaveScore read = new SaveScore();
 			TreeMap<String, Integer> x = read.readFromFile();
 			String namn = x.firstEntry().getKey();
@@ -56,10 +73,10 @@ public class VideoPoker {
 	}
 
 	public void saveToFile(int currentCredits) throws IOException {
-		System.out.println("Vill du spara dina krediter - y/n");
+		System.out.println("Vill du spara dina krediter - j/n");
 		Scanner scan = new Scanner(System.in);
 		String svar = scan.next();
-		if (svar.equals("y")) {
+		if (svar.equals("j")) {
 			System.out.println("Vad heter du?");
 			scan.nextLine();
 			String namn = scan.nextLine();
