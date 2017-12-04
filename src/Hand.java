@@ -1,10 +1,6 @@
-package GetRichOrDieTrying;
-
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-
-import GetRichOrDieTrying.src.Card;
-import GetRichOrDieTrying.src.PokerHand;
 
 public class Hand {
 
@@ -89,8 +85,9 @@ public class Hand {
 		return 0;
 	}
 
-	private boolean isRoyalFlush() {
-		if (cards.get(0).getSuit() == cards.get(4).getSuit()) { //// OBS SORTERA FÄRGEN.
+	private boolean isRoyalFlush() { //// OBS SORTERA FÄRGEN.
+		Collections.sort(cards, new CardSortBySuit());
+		if (cards.get(0).getSuit() == cards.get(4).getSuit()) {
 			if (cards.get(0).getValue() == 10) {
 				if (cards.get(1).getValue() == 11 && cards.get(2).getValue() == 12 && cards.get(3).getValue() == 13
 						&& cards.get(4).getValue() == 14) {
@@ -98,11 +95,11 @@ public class Hand {
 				}
 			}
 		}
-
 		return false;
 	}
 
 	private boolean isStraightFlush() {/// sortera på färg
+		Collections.sort(cards, new CardSortBySuit());
 		if (cards.get(0).getSuit() == cards.get(4).getSuit()) {
 			if (cards.get(0).getValue() == cards.get(1).getValue() - 1
 					&& cards.get(1).getValue() == cards.get(2).getValue() - 1
@@ -115,6 +112,7 @@ public class Hand {
 	}
 
 	private boolean isFourOfAKind() {
+		Collections.sort(cards, new CardSortByValueAcesHigh());
 		if (cards.get(0).getValue() == cards.get(1).getValue() && cards.get(1).getValue() == cards.get(2).getValue()
 				&& cards.get(2).getValue() == cards.get(3).getValue()) {
 			return true;
@@ -123,11 +121,11 @@ public class Hand {
 				&& cards.get(3).getValue() == cards.get(4).getValue()) {
 			return true;
 		}
-
 		return false;
 	}
 
 	private boolean isFullHouse() {
+		Collections.sort(cards, new CardSortByValueAcesHigh());
 		if ((cards.get(0).getValue() == cards.get(1).getValue()) && (cards.get(2).getValue() == cards.get(3).getValue()
 				&& cards.get(3).getValue() == cards.get(4).getValue())) {
 			return true;
@@ -140,6 +138,7 @@ public class Hand {
 	}
 
 	private boolean isFlush() {/// Sortera på färg
+		Collections.sort(cards, new CardSortBySuit());
 		if (cards.get(0).getSuit() == cards.get(4).getSuit()) {
 
 			return true;
@@ -149,6 +148,14 @@ public class Hand {
 	}
 
 	private boolean isStraight() {
+		Collections.sort(cards, new CardSortByValueAcesHigh());
+		if (cards.get(0).getValue() == cards.get(1).getValue() - 1
+				&& cards.get(1).getValue() == cards.get(2).getValue() - 1
+				&& cards.get(2).getValue() == cards.get(3).getValue() - 1
+				&& cards.get(3).getValue() == cards.get(4).getValue() - 1) {
+			return true;
+		}
+		Collections.sort(cards, new CardSortByValueAcesLow());
 		if (cards.get(0).getValue() == cards.get(1).getValue() - 1
 				&& cards.get(1).getValue() == cards.get(2).getValue() - 1
 				&& cards.get(2).getValue() == cards.get(3).getValue() - 1
@@ -160,7 +167,8 @@ public class Hand {
 	}
 
 	private boolean isThreeOfAKind() {
-		if (cards.get(0).getValue() == cards.get(1).getValue() && cards.get(1).getValue() == cards.get(0).getValue()) {
+		Collections.sort(cards, new CardSortByValueAcesHigh());
+		if (cards.get(0).getValue() == cards.get(1).getValue() && cards.get(1).getValue() == cards.get(2).getValue()) {
 			return true;
 		} else if (cards.get(1).getValue() == cards.get(2).getValue()
 				&& cards.get(2).getValue() == cards.get(3).getValue()) {
@@ -174,6 +182,7 @@ public class Hand {
 	}
 
 	private boolean isTwoPair() {
+		Collections.sort(cards, new CardSortByValueAcesHigh());
 		if (cards.get(0).getValue() == cards.get(1).getValue() && cards.get(3).getValue() == cards.get(4).getValue()) {
 			return true;
 		} else if (cards.get(1).getValue() == cards.get(2).getValue()
@@ -187,6 +196,7 @@ public class Hand {
 	}
 
 	private boolean isRoyalPair() {
+		Collections.sort(cards, new CardSortByValueAcesHigh());
 		if (cards.get(0).getValue() == cards.get(1).getValue() && cards.get(0).getValue() >= 11) {
 			return true;
 		} else if (cards.get(1).getValue() == cards.get(2).getValue() && cards.get(1).getValue() >= 11) {
