@@ -57,9 +57,7 @@ class VideoPokerTest {
 		for (Card card : deck.getCards()) {
 			shuffledCards.add(card);
 		}
-		Collections.shuffle(shuffledCards);
 		for (int i = 0; i < shuffledCards.size(); i++) {
-			System.out.println(i);
 			if (!shuffledCards.get(i).equals(orderedCards.get(i))) {
 				break;
 			}
@@ -93,7 +91,7 @@ class VideoPokerTest {
 
 	// Card tests ------------------
 	@Test
-	void testCardConstructor() {
+	void testCardProperties() {
 		Card card;
 		for (Suit suit : Suit.values()) {
 			for (int value = 1; value < 14; value++) {
@@ -102,6 +100,28 @@ class VideoPokerTest {
 				assertEquals(suit, card.getSuit(), "card.getSuit returns correct suit");
 			}
 		}
+	}
+	
+	// Comparator tests ------------------
+	
+//	@Test
+	void testCardSortBySuit() {
+		
+	}
+	
+//	@Test
+	void testCardSortByValueNoAces() {
+		
+	}
+	
+//	@Test
+	void testCardSortByValueAcesHigh() {
+		
+	}
+	
+//	@Test
+	void testCardSortByValueAcesLow() {
+		
 	}
 	
 	// Hand tests -----------------------
@@ -117,20 +137,20 @@ class VideoPokerTest {
 //	de @Test som avser getMoneyMultiplier är bortkommenterade då metodens hjälpmetoder
 //	inte är implementerade ännu
 	
-//	@Test
+	@Test
 	void testGetMoneyMultiplierRoyalFlush() {
 		List<Card> cards = new LinkedList<>();
 		cards.add(new Card(10, Suit.CLUBS));
 		cards.add(new Card(11, Suit.CLUBS));
 		cards.add(new Card(12, Suit.CLUBS));
 		cards.add(new Card(13, Suit.CLUBS));
-		cards.add(new Card(1, Suit.CLUBS));
+		cards.add(new Card(14, Suit.CLUBS));
 		Hand hand = new Hand(cards);
 		assertEquals(PokerHand.ROYAL_FLUSH.getMoneyMultiplier(),
 				hand.getMoneyMultiplier(), "Royal flush equals 250 multiplier");
 	}
 	
-//	@Test
+	@Test
 	void testGetMoneyMultiplierStraightFlush() {
 		List<Card> cards = new LinkedList<>();
 		cards.add(new Card(2, Suit.CLUBS));
@@ -143,46 +163,46 @@ class VideoPokerTest {
 				hand.getMoneyMultiplier(), "Straight flush equals 50 multiplier");
 	}
 	
-//	@Test
+	@Test
 	void testGetMoneyMultiplierFourOfAKind() {
 		List<Card> cards = new LinkedList<>();
-		cards.add(new Card(2, Suit.CLUBS));
-		cards.add(new Card(3, Suit.CLUBS));
-		cards.add(new Card(4, Suit.CLUBS));
 		cards.add(new Card(5, Suit.CLUBS));
+		cards.add(new Card(5, Suit.HEARTS));
+		cards.add(new Card(5, Suit.SPADES));
+		cards.add(new Card(5, Suit.DIAMONDS));
 		cards.add(new Card(6, Suit.CLUBS));
 		Hand hand = new Hand(cards);
 		assertEquals(PokerHand.FOUR_OF_A_KIND.getMoneyMultiplier(),
 				hand.getMoneyMultiplier(), "Four of a kind equals 25 multiplier");
 	}
 	
-//	@Test
+	@Test
 	void testGetMoneyMultiplierFullHouse() {
 		List<Card> cards = new LinkedList<>();
 		cards.add(new Card(3, Suit.CLUBS));
 		cards.add(new Card(3, Suit.CLUBS));
 		cards.add(new Card(6, Suit.CLUBS));
-		cards.add(new Card(6, Suit.CLUBS));
-		cards.add(new Card(6, Suit.CLUBS));
+		cards.add(new Card(6, Suit.DIAMONDS));
+		cards.add(new Card(6, Suit.HEARTS));
 		Hand hand = new Hand(cards);
 		assertEquals(PokerHand.FULL_HOUSE.getMoneyMultiplier(),
 				hand.getMoneyMultiplier(), "Full house equals 9 multiplier");
 	}
 	
-//	@Test
+	@Test
 	void testGetMoneyMultiplierFlush() {
 		List<Card> cards = new LinkedList<>();
 		cards.add(new Card(3, Suit.CLUBS));
-		cards.add(new Card(3, Suit.CLUBS));
+		cards.add(new Card(4, Suit.CLUBS));
 		cards.add(new Card(6, Suit.CLUBS));
 		cards.add(new Card(8, Suit.CLUBS));
-		cards.add(new Card(6, Suit.CLUBS));
+		cards.add(new Card(5, Suit.CLUBS));
 		Hand hand = new Hand(cards);
 		assertEquals(PokerHand.FLUSH.getMoneyMultiplier(),
 				hand.getMoneyMultiplier(), "Flush equals 6 multiplier");
 	}
 	
-//	@Test
+	@Test
 	void testGetMoneyMultiplierStraight() {
 		List<Card> cards = new LinkedList<>();
 		cards.add(new Card(3, Suit.HEARTS));
@@ -195,7 +215,7 @@ class VideoPokerTest {
 				hand.getMoneyMultiplier(), "Straight equals 4 multiplier");
 	}
 	
-//	@Test
+	@Test
 	void testGetMoneyMultiplierThreeOfAKind() {
 		List<Card> cards = new LinkedList<>();
 		cards.add(new Card(4, Suit.HEARTS));
@@ -208,7 +228,7 @@ class VideoPokerTest {
 				hand.getMoneyMultiplier(), "Three of a kind equals 3 multiplier");
 	}
 	
-//	@Test
+	@Test
 	void testGetMoneyMultiplierTwoPair() {
 		List<Card> cards = new LinkedList<>();
 		cards.add(new Card(9, Suit.HEARTS));
@@ -217,11 +237,11 @@ class VideoPokerTest {
 		cards.add(new Card(5, Suit.CLUBS));
 		cards.add(new Card(7, Suit.CLUBS));
 		Hand hand = new Hand(cards);
-		assertEquals(PokerHand.STRAIGHT.getMoneyMultiplier(),
+		assertEquals(PokerHand.TWO_PAIR.getMoneyMultiplier(),
 				hand.getMoneyMultiplier(), "Two pair equals 2 multiplier");
 	}
 	
-//	@Test
+	@Test
 	void testGetMoneyMultiplierRoyalPair() {
 		List<Card> cards = new LinkedList<>();
 		cards.add(new Card(11, Suit.HEARTS));
@@ -234,7 +254,7 @@ class VideoPokerTest {
 				hand.getMoneyMultiplier(), "Royal pair equals 1 multiplier");
 	}
 	
-//	@Test
+	@Test
 	void testGetMoneyMultiplierLosingHand() {
 		List<Card> cards = new LinkedList<>();
 		cards.add(new Card(2, Suit.HEARTS));
