@@ -11,17 +11,34 @@ public class VideoPoker {
 	private int startingBalance = 1000;
 	private final Deck deck = new Deck();
 	private final Hand hand = new Hand();
+	private boolean spela = true;
 
 	public void playGame() throws IOException {
 		startingBalance += readFromFile();
-		System.out.println("Du har " + startingBalance + " pengar nu");
-		int currentBet = bet(startingBalance);
-		startingBalance -= currentBet;
-		System.out.println("Du har " + startingBalance + " pengar kvar");
-		deck.shuffle();
-		giv();
-		kasta();
+
+		while (spela) {
+			System.out.println("Du har " + startingBalance + " pengar nu");
+			int currentBet = bet(startingBalance);
+			startingBalance -= currentBet;
+			System.out.println("Du har " + startingBalance + " pengar kvar");
+			deck.shuffle();
+			giv();
+			kasta();
+			playAgain();
+		}
 		saveToFile(startingBalance);
+	}
+
+	private void playAgain() {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Vill du spela igen?");
+		String svar = scan.nextLine();
+		if (svar.equals("y")) {
+			spela = true;
+		}
+		else {
+			spela = false;
+		}
 	}
 
 	public int bet(int currentCredits) {
