@@ -49,7 +49,7 @@ public class VideoPoker {
 		return hand;
 	}
 
-	public static List<Card> kasta(List<Card> hand, Deck d) {
+	public List<Card> kasta(List<Card> hand, Deck d) {
 		System.out.println("Vilka kort vill du slänga, komma(',') mellan numrena. (', <ENTER>') om du är nöjd");
 		Scanner scan = new Scanner(System.in);
 		String vilka = scan.next();
