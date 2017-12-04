@@ -3,7 +3,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 import java.util.TreeMap;
@@ -33,18 +32,10 @@ public class VideoPoker {
 		String svar = scan.nextLine();
 		if(svar.equals("y")) {
 			SaveScore read = new SaveScore();
-			//HashMap<String, Integer> hm = new HashMap<String, Integer>();
 			TreeMap<String, Integer> x = read.readFromFile();
 			String namn = x.firstEntry().getKey();
 			int pengar = x.firstEntry().getValue();
-			//String[] y = x.values().toArray()[0].toString().split('=');
-			//x.split('=');
-			//String namn = x.firstEntry().getKey;
-			//for()
 			System.out.println("Välkommen tillbaka " + namn);
-			//String namn = x.get(key);
-			//String namn = read.readFromFile().getKey();
-			//HashMap monies = read.readFromFile();
 			return pengar;
 		}
 		return 0;
