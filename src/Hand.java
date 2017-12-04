@@ -14,6 +14,14 @@ public class Hand {
 		super();
 		this.cards = cards;
 	}
+	
+	public int getSize() {
+		return cards.size();
+	}
+	
+	public Card getCard(int index) {
+		return cards.get(index);
+	}
 
 	public void add(Card card) {
 		cards.add(card);
@@ -24,13 +32,13 @@ public class Hand {
 	}
 
 	public void discard(int cardIndex) {
-		cards.remove(cardIndex - 1);
+		cards.remove(cardIndex);
 	}
 
 	public void discard(List<Integer> cardIndices) {
 		List<Card> cardsToDiscard = new LinkedList<>();
 		for (Integer index : cardIndices) {
-			cardsToDiscard.add(cards.get(index - 1));
+			cardsToDiscard.add(cards.get(index));
 		}
 		cards.removeAll(cardsToDiscard);
 	}

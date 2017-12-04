@@ -6,20 +6,33 @@ import java.util.List;
 import java.util.Scanner;
 
 public class VideoPoker {
+	
 	private int startingBalance = 1000;
+	private final Deck deck = new Deck();
+	private final Hand hand = new Hand();
 
 	public void playGame() throws IOException {
-
-		BetMoney bm = new BetMoney();
-		bm.bet(startingBalance);
-
-		Deck deck = new Deck();
+		bet(startingBalance);
 		deck.shuffle();
-		kasta(hand(deck), deck);
-
+		giv();
+		kasta();
 		saveToFile(startingBalance);
+	}
+	
+	public int bet(int currentCredits) {
+		System.out.println("Hur mycket vill du satsa?");
+		int i = 0;
+		Scanner scan = new Scanner(System.in);
 		
-
+		i = scan.nextInt();
+		if(i>currentCredits) {
+			System.out.println("Du kan inte satsa mer pengar än vad du äger, pls try agen");
+			while(i>currentCredits) {
+				i = scan.nextInt();
+			}
+		}
+		System.out.println("Du har satsat: " + i);
+		return i;
 	}
 
 	public void saveToFile(int currentCredits) throws IOException {
@@ -39,34 +52,31 @@ public class VideoPoker {
 		}
 	}
 	
-	public static List<Card> hand(Deck deck) {
-		List<Card> hand = new ArrayList<>();
-
-		while (hand.size() < 5) {
+	public void giv() {
+		while (hand.getSize() < 5) {
 			hand.add(deck.draw());
 		}
 		System.out.println(hand);
-		return hand;
 	}
 
-	public static List<Card> kasta(List<Card> hand, Deck d) {
+	public void kasta() {
 		System.out.println("Vilka kort vill du slänga, komma(',') mellan numrena");
 		Scanner scan = new Scanner(System.in);
-		String vilka = scan.next();;
+		String vilka = scan.next();
 		List<String> items = Arrays.asList(vilka.split(","));
 
 		Collections.sort(items, Collections.reverseOrder());
 		for (int i = 0; i < items.size(); i++) {
 			int temp = Integer.parseInt(items.get(i));
-			System.out.println("Du har slängt " + hand.get(temp - 1));
-			hand.remove(temp - 1);
+			System.out.println("Du har slängt " + hand.getCard(temp - 1));
+			hand.discard(temp - 1);
 		}
 
 		for (int i = 0; i < items.size(); i++) {
-			hand.add(d.draw());
+			hand.add(deck.draw());
 		}
 
 		System.out.println("Nu är din hand" + hand);
-		return hand;
 	}
+	
 }

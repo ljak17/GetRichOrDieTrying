@@ -2,7 +2,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.fail;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -26,7 +29,7 @@ class VideoPokerTest {
 	}
 
 	@Test
-	void testDeckDraw0() {
+	void testDeckDraw() {
 		deck.draw();
 		assertEquals(deck.getCards().size(), 51, "Deck size decreases by 1 when draw() is called");
 	}
@@ -41,6 +44,29 @@ class VideoPokerTest {
 	@Test
 	void testDeckShuffleNoException() {
 		deck.shuffle();
+	}
+	
+	@Test
+	void testShuffleChangeOrder() {
+		List<Card>orderedCards = new ArrayList<>();
+		for (Card card : deck.getCards()) {
+			orderedCards.add(card);
+		}
+		List<Card>shuffledCards = new ArrayList<>();
+		deck.shuffle();
+		for (Card card : deck.getCards()) {
+			shuffledCards.add(card);
+		}
+		Collections.shuffle(shuffledCards);
+		for (int i = 0; i < shuffledCards.size(); i++) {
+			System.out.println(i);
+			if (!shuffledCards.get(i).equals(orderedCards.get(i))) {
+				break;
+			}
+			if (i == shuffledCards.size() - 1) {
+				fail("Calling shuffle() changes order of cards in deck.");
+			}
+		}
 	}
 
 	@Test
