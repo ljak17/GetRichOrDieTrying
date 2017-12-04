@@ -9,15 +9,12 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.TreeMap;
 
 public class SaveScore {
-	private String name;
+	//private String name;
 
-	SaveScore(String name) {
-		this.name = name;
-	}
-
-	public void writeToFile(int score) throws IOException {
+	public void writeToFile(String name, int score) throws IOException {
 		String comboyo = name + "," + score;
 		List<String> lines = new ArrayList<>();
 		lines.add(comboyo);
@@ -32,8 +29,8 @@ public class SaveScore {
 		}
 	}
 
-	public HashMap<String, Integer> readFromFile() throws FileNotFoundException {
-		HashMap<String, Integer> hm = new HashMap<String, Integer>();
+	public TreeMap<String, Integer> readFromFile() throws FileNotFoundException {
+		TreeMap<String, Integer> hm = new TreeMap<String, Integer>();
 
 		try {
 			BufferedReader br = new BufferedReader(new FileReader("./src/abc.txt"));
