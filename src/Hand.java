@@ -90,7 +90,7 @@ public class Hand {
 	}
 
 	private boolean isRoyalFlush() {
-		if (cards.get(0).getSuit() == cards.get(4).getSuit()) { //// OBS SORTERA FÄRGEN
+		if (cards.get(0).getSuit() == cards.get(4).getSuit()) { //// OBS SORTERA FÄRGEN.
 			if (cards.get(0).getValue() == 10) {
 				if (cards.get(1).getValue() == 11 && cards.get(2).getValue() == 12 && cards.get(3).getValue() == 13
 						&& cards.get(4).getValue() == 14) {
