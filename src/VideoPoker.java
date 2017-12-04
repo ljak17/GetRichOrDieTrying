@@ -1,9 +1,12 @@
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 public class VideoPoker {
 	private int startingBalance = 1000;
@@ -11,17 +14,41 @@ public class VideoPoker {
 	public void playGame() throws IOException {
 
 		BetMoney bm = new BetMoney();
-		bm.bet(startingBalance);
-
+		startingBalance += readFromFile();
+		System.out.println("Du har " + startingBalance + " pengar nu");
+		int currentBet = bm.bet(startingBalance);
+		startingBalance -= currentBet;
+		System.out.println("Du har " + startingBalance + " pengar kvar");
+		
 		Deck deck = new Deck();
 		deck.shuffle();
 		kasta(hand(deck), deck);
-
 		saveToFile(startingBalance);
 		
 
 	}
-
+	public int readFromFile() throws FileNotFoundException {
+		System.out.println("Har du en sparfil?");
+		Scanner scan = new Scanner(System.in);
+		String svar = scan.nextLine();
+		if(svar.equals("y")) {
+			SaveScore read = new SaveScore();
+			//HashMap<String, Integer> hm = new HashMap<String, Integer>();
+			TreeMap<String, Integer> x = read.readFromFile();
+			String namn = x.firstEntry().getKey();
+			int pengar = x.firstEntry().getValue();
+			//String[] y = x.values().toArray()[0].toString().split('=');
+			//x.split('=');
+			//String namn = x.firstEntry().getKey;
+			//for()
+			System.out.println("Välkommen tillbaka " + namn);
+			//String namn = x.get(key);
+			//String namn = read.readFromFile().getKey();
+			//HashMap monies = read.readFromFile();
+			return pengar;
+		}
+		return 0;
+	}
 	public void saveToFile(int currentCredits) throws IOException {
 		System.out.println("Vill du spara dina krediter - y/n");
 		Scanner scan = new Scanner(System.in);
@@ -30,8 +57,8 @@ public class VideoPoker {
 			System.out.println("Vad heter du?");
 			scan.nextLine();
 			String namn = scan.nextLine();
-			SaveScore ss = new SaveScore(namn);
-			ss.writeToFile(currentCredits);
+			SaveScore ss = new SaveScore();
+			ss.writeToFile(namn, currentCredits);
 			System.out.println("TEST: input från fil" + ss.readFromFile());
 		}
 		else {
