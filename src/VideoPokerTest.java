@@ -134,9 +134,6 @@ class VideoPokerTest {
  * hand ska förlora de kort som tas bort med discard (ett efter ett)
  */
 	
-//	de @Test som avser getMoneyMultiplier är bortkommenterade då metodens hjälpmetoder
-//	inte är implementerade ännu
-	
 	@Test
 	void testGetMoneyMultiplierRoyalFlush() {
 		List<Card> cards = new LinkedList<>();
