@@ -9,7 +9,8 @@ public enum PokerHand {
 	STRAIGHT(4, "straight"),
 	THREE_OF_A_KIND(3, "three of a kind"),
 	TWO_PAIR(2, "two pair"),
-	ROYAL_PAIR(1, "royal pair");
+	ROYAL_PAIR(1, "royal pair"),
+	LOSING_HAND(0, "losing hand");
 	
 	private int moneyMultiplier;
 	private String name;

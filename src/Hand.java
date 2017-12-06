@@ -54,35 +54,35 @@ public class Hand {
 		return stringBuilder.append("]").toString();
 	}
 
-	public int getMoneyMultiplier() {
+	public PokerHand getPokerHand() {
 		if (isRoyalFlush()) {
-			return PokerHand.ROYAL_FLUSH.getMoneyMultiplier();
+			return PokerHand.ROYAL_FLUSH;
 		}
 		if (isStraightFlush()) {
-			return PokerHand.STRAIGHT_FLUSH.getMoneyMultiplier();
+			return PokerHand.STRAIGHT_FLUSH;
 		}
 		if (isFourOfAKind()) {
-			return PokerHand.FOUR_OF_A_KIND.getMoneyMultiplier();
+			return PokerHand.FOUR_OF_A_KIND;
 		}
 		if (isFullHouse()) {
-			return PokerHand.FULL_HOUSE.getMoneyMultiplier();
+			return PokerHand.FULL_HOUSE;
 		}
 		if (isFlush()) {
-			return PokerHand.FLUSH.getMoneyMultiplier();
+			return PokerHand.FLUSH;
 		}
 		if (isStraight()) {
-			return PokerHand.STRAIGHT.getMoneyMultiplier();
+			return PokerHand.STRAIGHT;
 		}
 		if (isThreeOfAKind()) {
-			return PokerHand.THREE_OF_A_KIND.getMoneyMultiplier();
+			return PokerHand.THREE_OF_A_KIND;
 		}
 		if (isTwoPair()) {
-			return PokerHand.TWO_PAIR.getMoneyMultiplier();
+			return PokerHand.TWO_PAIR;
 		}
 		if (isRoyalPair()) {
-			return PokerHand.ROYAL_PAIR.getMoneyMultiplier();
+			return PokerHand.ROYAL_PAIR;
 		}
-		return 0;
+		return PokerHand.LOSING_HAND;
 	}
 
 	private boolean isRoyalFlush() { //// OBS SORTERA FÄRGEN.

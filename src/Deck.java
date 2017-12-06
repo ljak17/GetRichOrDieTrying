@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Deck {
 
-	List<Card> cards = new LinkedList<>();
+	private List<Card> cards = new LinkedList<>();
 
 	public Deck() {
 		for (Suit suit : Suit.values()) {

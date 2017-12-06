@@ -9,7 +9,7 @@ import java.util.TreeMap;
 public class VideoPoker {
 
 	private int startingBalance = 1000;
-	private Deck deck = new Deck();
+	private Deck deck;
 	private Hand hand;
 	private boolean spela = true;
 
@@ -21,15 +21,21 @@ public class VideoPoker {
 			int currentBet = bet(startingBalance);
 			startingBalance -= currentBet;
 			System.out.println("Du har " + startingBalance + " pengar kvar");
-			deck.shuffle();
-			giv();
-			kasta();
-			startingBalance +=  currentBet* hand.getMoneyMultiplier();
+			resetGame();
+			dealInitialHand();
+			discard();
+			startingBalance += currentBet * hand.getPokerHand().getMoneyMultiplier();
 			playAgain();
 		}
 		saveToFile(startingBalance);
 	}
 
+	private void resetGame() {
+		deck = new Deck();
+		deck.shuffle();
+		hand = new Hand();
+	}
+	
 	private void playAgain() {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Vill du spela igen? j/n");
@@ -89,7 +95,7 @@ public class VideoPoker {
 		}
 	}
 
-	public void giv() {
+	public void dealInitialHand() {
 		hand = new Hand();
 		while (hand.getSize() < 5) {
 			hand.add(deck.draw());
@@ -97,7 +103,7 @@ public class VideoPoker {
 		System.out.println(hand);
 	}
 
-	public void kasta() {
+	public void discard() {
 		System.out.println("Vilka kort vill du slänga, komma(',') mellan numrena. (', <ENTER>') om du är nöjd");
 		Scanner scan = new Scanner(System.in);
 		String vilka = scan.next();
@@ -111,12 +117,7 @@ public class VideoPoker {
 		for (int i = 0; i < items.size(); i++) {
 			hand.add(deck.draw());
 		}
-		
 		System.out.println("Nu är din hand" + hand);
-		
-		
-		
-	
 	}
 
 }
