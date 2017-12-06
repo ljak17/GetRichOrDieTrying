@@ -25,6 +25,8 @@ public class VideoPoker {
 			giv();
 			kasta();
 			startingBalance +=  currentBet* hand.getMoneyMultiplier();
+			System.out.println("Du vann " + currentBet * hand.getMoneyMultiplier());
+			System.out.println("Du har " + startingBalance + " pengar nu");
 			playAgain();
 		}
 		saveToFile(startingBalance);
@@ -112,6 +114,7 @@ public class VideoPoker {
 		}
 		
 		System.out.println("Nu är din hand" + hand);
+		
 		
 		
 		
