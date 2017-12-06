@@ -19,14 +19,18 @@ public class VideoPoker {
 		while (spela) {
 			System.out.println("Du har " + startingBalance + " pengar nu");
 			int currentBet = bet(startingBalance);
-			startingBalance -= currentBet;
-			System.out.println("Du har " + startingBalance + " pengar kvar");
+			
 			resetGame();
 			dealInitialHand();
 			discard();
-			startingBalance += currentBet * hand.getPokerHand().getMoneyMultiplier();
 			System.out.println("Du fick " + hand.getPokerHand());
 			System.out.println("Du vann " + currentBet * hand.getPokerHand().getMoneyMultiplier());
+			if(hand.getPokerHand().getMoneyMultiplier() == 0) {
+				startingBalance -= currentBet;}
+			
+			else {
+				startingBalance += currentBet * hand.getPokerHand().getMoneyMultiplier();
+			}
 			System.out.println("Du har " + startingBalance + " pengar nu");
 			playAgain();
 		}
