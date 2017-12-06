@@ -9,8 +9,8 @@ import java.util.TreeMap;
 public class VideoPoker {
 
 	private int startingBalance = 1000;
-	private final Deck deck = new Deck();
-	private final Hand hand = new Hand();
+	private Deck deck = new Deck();
+	private Hand hand;
 	private boolean spela = true;
 
 	public void playGame() throws IOException {
@@ -92,6 +92,7 @@ public class VideoPoker {
 	}
 
 	public void giv() {
+		hand = new Hand();
 		while (hand.getSize() < 5) {
 			hand.add(deck.draw());
 		}
