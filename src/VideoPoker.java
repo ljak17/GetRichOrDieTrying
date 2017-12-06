@@ -24,6 +24,7 @@ public class VideoPoker {
 			deck.shuffle();
 			giv();
 			kasta();
+			startingBalance +=  currentBet* hand.getMoneyMultiplier();
 			playAgain();
 		}
 		saveToFile(startingBalance);
@@ -109,7 +110,12 @@ public class VideoPoker {
 		for (int i = 0; i < items.size(); i++) {
 			hand.add(deck.draw());
 		}
+		
 		System.out.println("Nu är din hand" + hand);
+		
+		
+		
+	
 	}
 
 }
