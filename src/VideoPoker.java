@@ -25,6 +25,7 @@ public class VideoPoker {
 			dealInitialHand();
 			discard();
 			startingBalance += currentBet * hand.getPokerHand().getMoneyMultiplier();
+			System.out.println("Du fick " + hand.getPokerHand());
 			System.out.println("Du vann " + currentBet * hand.getPokerHand().getMoneyMultiplier());
 			System.out.println("Du har " + startingBalance + " pengar nu");
 			playAgain();
