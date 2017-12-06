@@ -1,24 +1,31 @@
 
 public enum PokerHand {
 
-	ROYAL_FLUSH(250), 
-	STRAIGHT_FLUSH(50), 
-	FOUR_OF_A_KIND(25), 
-	FULL_HOUSE(9),
-	FLUSH(6),
-	STRAIGHT(4),
-	THREE_OF_A_KIND(3),
-	TWO_PAIR(2),
-	ROYAL_PAIR(1);
+	ROYAL_FLUSH(250, "royal flush"), 
+	STRAIGHT_FLUSH(50, "straight flush"), 
+	FOUR_OF_A_KIND(25, "four of a kind"), 
+	FULL_HOUSE(9, "full house"),
+	FLUSH(6, "flush"),
+	STRAIGHT(4, "straight"),
+	THREE_OF_A_KIND(3, "three of a kind"),
+	TWO_PAIR(2, "two pair"),
+	ROYAL_PAIR(1, "royal pair");
 	
 	private int moneyMultiplier;
+	private String name;
 
-	private PokerHand(int moneyMultiplier) {
+	private PokerHand(int moneyMultiplier, String name) {
 		this.moneyMultiplier = moneyMultiplier;
+		this.name = name;
 	}
 
 	public int getMoneyMultiplier() {
 		return moneyMultiplier;
+	}
+	
+	@Override
+	public String toString() {
+		return name;
 	}
 	
 }
