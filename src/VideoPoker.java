@@ -12,9 +12,15 @@ public class VideoPoker {
 	private Deck deck;
 	private Hand hand;
 	private boolean spela = true;
+	private String namex = "";
 
 	public void playGame() throws IOException {
 		startingBalance += readFromFile();
+		if(namex.equals("")) {
+			System.out.println("Vad heter du?");
+			Scanner scanName = new Scanner(System.in);
+			namex = scanName.nextLine();
+		}
 
 		while (spela) {
 			System.out.println("Du har " + startingBalance + " pengar nu");
@@ -28,9 +34,9 @@ public class VideoPoker {
 			System.out.println("Du fick " + hand.getPokerHand());
 			System.out.println("Du vann " + currentBet * hand.getPokerHand().getMoneyMultiplier());
 			System.out.println("Du har " + startingBalance + " pengar nu");
+			saveToFile(startingBalance, namex);
 			playAgain();
 		}
-		saveToFile(startingBalance);
 	}
 
 	private void resetGame() {
@@ -76,26 +82,18 @@ public class VideoPoker {
 			TreeMap<String, Integer> x = read.readFromFile();
 			String namn = x.firstEntry().getKey();
 			int pengar = x.firstEntry().getValue();
+			namex = namn;
 			System.out.println("Välkommen tillbaka " + namn);
 			return pengar;
 		}
 		return 0;
 	}
 
-	public void saveToFile(int currentCredits) throws IOException {
-		System.out.println("Vill du spara dina krediter - j/n");
-		Scanner scan = new Scanner(System.in);
-		String svar = scan.next();
-		if (svar.equals("j")) {
-			System.out.println("Vad heter du?");
-			scan.nextLine();
-			String namn = scan.nextLine();
+	public void saveToFile(int currentCredits, String inNamn) throws IOException {
 			SaveScore ss = new SaveScore();
-			ss.writeToFile(namn, currentCredits);
+			ss.writeToFile(inNamn, currentCredits);
+			System.out.println("Fil sparad");
 			System.out.println("TEST: input från fil" + ss.readFromFile());
-		} else {
-			System.out.println("ha de gött änna");
-		}
 	}
 
 	public void dealInitialHand() {
