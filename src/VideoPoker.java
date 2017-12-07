@@ -57,7 +57,9 @@ public class VideoPoker {
 			spela = true;
 		}
 		else {
+			System.out.println("Ha det gött, änna.");
 			spela = false;
+			
 		}
 	}
 
