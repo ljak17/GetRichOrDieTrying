@@ -144,7 +144,7 @@ class VideoPokerTest {
 		cards.add(new Card(14, Suit.CLUBS));
 		Hand hand = new Hand(cards);
 		assertEquals(PokerHand.ROYAL_FLUSH.getMoneyMultiplier(),
-				hand.getMoneyMultiplier(), "Royal flush equals 250 multiplier");
+				hand.getPokerHand().getMoneyMultiplier(), "Royal flush equals 250 multiplier");
 	}
 	
 	@Test
@@ -157,7 +157,7 @@ class VideoPokerTest {
 		cards.add(new Card(6, Suit.CLUBS));
 		Hand hand = new Hand(cards);
 		assertEquals(PokerHand.STRAIGHT_FLUSH.getMoneyMultiplier(),
-				hand.getMoneyMultiplier(), "Straight flush equals 50 multiplier");
+				hand.getPokerHand().getMoneyMultiplier(), "Straight flush equals 50 multiplier");
 	}
 	
 	@Test
@@ -170,7 +170,7 @@ class VideoPokerTest {
 		cards.add(new Card(6, Suit.CLUBS));
 		Hand hand = new Hand(cards);
 		assertEquals(PokerHand.FOUR_OF_A_KIND.getMoneyMultiplier(),
-				hand.getMoneyMultiplier(), "Four of a kind equals 25 multiplier");
+				hand.getPokerHand().getMoneyMultiplier(), "Four of a kind equals 25 multiplier");
 	}
 	
 	@Test
@@ -183,7 +183,7 @@ class VideoPokerTest {
 		cards.add(new Card(6, Suit.HEARTS));
 		Hand hand = new Hand(cards);
 		assertEquals(PokerHand.FULL_HOUSE.getMoneyMultiplier(),
-				hand.getMoneyMultiplier(), "Full house equals 9 multiplier");
+				hand.getPokerHand().getMoneyMultiplier(), "Full house equals 9 multiplier");
 	}
 	
 	@Test
@@ -196,7 +196,7 @@ class VideoPokerTest {
 		cards.add(new Card(5, Suit.CLUBS));
 		Hand hand = new Hand(cards);
 		assertEquals(PokerHand.FLUSH.getMoneyMultiplier(),
-				hand.getMoneyMultiplier(), "Flush equals 6 multiplier");
+				hand.getPokerHand().getMoneyMultiplier(), "Flush equals 6 multiplier");
 	}
 	
 	@Test
@@ -209,7 +209,7 @@ class VideoPokerTest {
 		cards.add(new Card(7, Suit.CLUBS));
 		Hand hand = new Hand(cards);
 		assertEquals(PokerHand.STRAIGHT.getMoneyMultiplier(),
-				hand.getMoneyMultiplier(), "Straight equals 4 multiplier");
+				hand.getPokerHand().getMoneyMultiplier(), "Straight equals 4 multiplier");
 	}
 	
 	@Test
@@ -222,7 +222,7 @@ class VideoPokerTest {
 		cards.add(new Card(7, Suit.CLUBS));
 		Hand hand = new Hand(cards);
 		assertEquals(PokerHand.THREE_OF_A_KIND.getMoneyMultiplier(),
-				hand.getMoneyMultiplier(), "Three of a kind equals 3 multiplier");
+				hand.getPokerHand().getMoneyMultiplier(), "Three of a kind equals 3 multiplier");
 	}
 	
 	@Test
@@ -235,7 +235,7 @@ class VideoPokerTest {
 		cards.add(new Card(7, Suit.CLUBS));
 		Hand hand = new Hand(cards);
 		assertEquals(PokerHand.TWO_PAIR.getMoneyMultiplier(),
-				hand.getMoneyMultiplier(), "Two pair equals 2 multiplier");
+				hand.getPokerHand().getMoneyMultiplier(), "Two pair equals 2 multiplier");
 	}
 	
 	@Test
@@ -248,7 +248,7 @@ class VideoPokerTest {
 		cards.add(new Card(7, Suit.CLUBS));
 		Hand hand = new Hand(cards);
 		assertEquals(PokerHand.ROYAL_PAIR.getMoneyMultiplier(),
-				hand.getMoneyMultiplier(), "Royal pair equals 1 multiplier");
+				hand.getPokerHand().getMoneyMultiplier(), "Royal pair equals 1 multiplier");
 	}
 	
 	@Test
@@ -260,7 +260,7 @@ class VideoPokerTest {
 		cards.add(new Card(4, Suit.CLUBS));
 		cards.add(new Card(7, Suit.CLUBS));
 		Hand hand = new Hand(cards);
-		assertEquals(0,	hand.getMoneyMultiplier(), "Losing hand equals 0 multiplier");
+		assertEquals(0,	hand.getPokerHand().getMoneyMultiplier(), "Losing hand equals 0 multiplier");
 	}
 	
 }
