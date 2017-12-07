@@ -28,20 +28,8 @@ public class Hand {
 		cards.add(card);
 	}
 
-	public void add(List<Card> cards) {
-		cards.addAll(cards);
-	}
-
 	public void discard(int cardIndex) {
 		cards.remove(cardIndex);
-	}
-
-	public void discard(List<Integer> cardIndices) {
-		List<Card> cardsToDiscard = new LinkedList<>();
-		for (Integer index : cardIndices) {
-			cardsToDiscard.add(cards.get(index));
-		}
-		cards.removeAll(cardsToDiscard);
 	}
 
 	@Override
