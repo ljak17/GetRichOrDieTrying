@@ -3,13 +3,13 @@ public enum PokerHand {
 
 	ROYAL_FLUSH(250, "royal flush"), 
 	STRAIGHT_FLUSH(50, "straight flush"), 
-	FOUR_OF_A_KIND(25, "four of a kind"), 
-	FULL_HOUSE(9, "full house"),
-	FLUSH(6, "flush"),
-	STRAIGHT(4, "straight"),
-	THREE_OF_A_KIND(3, "three of a kind"),
-	TWO_PAIR(2, "two pair"),
-	ROYAL_PAIR(1, "royal pair"),
+	FOUR_OF_A_KIND(25, "fyrtal"), 
+	FULL_HOUSE(9, "kåk"),
+	FLUSH(6, "färg"),
+	STRAIGHT(4, "stege"),
+	THREE_OF_A_KIND(3, "triss"),
+	TWO_PAIR(2, "tvåpar"),
+	ROYAL_PAIR(1, "knekt eller högre"),
 	LOSING_HAND(0, "kass hand");
 	
 	private int moneyMultiplier;
