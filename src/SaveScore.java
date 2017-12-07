@@ -19,9 +19,9 @@ public class SaveScore {
 		List<String> lines = new ArrayList<>();
 		lines.add(comboyo);
 		try {
-			Path file = Paths.get("./src", "abc.txt");//bytas namn eventuellt
+			Path file = Paths.get("./src", "saveFile.txt");//bytas namn eventuellt
 			Files.write(file, lines);
-			System.out.println("Sparat filen yao");
+			System.out.println("Dina krediter är sparade.");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (UnsupportedEncodingException e) {
@@ -33,7 +33,7 @@ public class SaveScore {
 		TreeMap<String, Integer> hm = new TreeMap<String, Integer>();
 
 		try {
-			BufferedReader br = new BufferedReader(new FileReader("./src/abc.txt"));
+			BufferedReader br = new BufferedReader(new FileReader("./src/saveFile.txt"));
 			String line = br.readLine();
 			String[] splittext = line.split(",");
 			String nameFromFile = splittext[0];

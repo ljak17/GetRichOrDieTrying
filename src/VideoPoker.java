@@ -23,7 +23,7 @@ public class VideoPoker {
 		}
 
 		while (spela) {
-			System.out.println("Du har " + startingBalance + " pengar nu");
+			System.out.println("Du har " + startingBalance + " kronor.");
 			int currentBet = bet(startingBalance);
 			
 			resetGame();
@@ -37,7 +37,7 @@ public class VideoPoker {
 			else {
 				startingBalance += currentBet * hand.getPokerHand().getMoneyMultiplier();
 			}
-			System.out.println("Du har " + startingBalance + " pengar nu");
+			System.out.println("Du har " + startingBalance + " kronor.");
 			saveToFile(startingBalance, namex);
 			playAgain();
 		}
@@ -68,7 +68,7 @@ public class VideoPoker {
 
 		i = scan.nextInt();
 		if (i > currentCredits) {
-			System.out.println("Du kan inte satsa mer pengar än vad du äger, pls try agen");
+			System.out.println("Du kan inte satsa mer pengar än vad du äger, försök igen.");
 			while (i > currentCredits) {
 				i = scan.nextInt();
 			}
@@ -97,7 +97,7 @@ public class VideoPoker {
 			SaveScore ss = new SaveScore();
 			ss.writeToFile(inNamn, currentCredits);
 			System.out.println("Fil sparad");
-			System.out.println("TEST: input från fil" + ss.readFromFile());
+//			System.out.println("TEST: input från fil" + ss.readFromFile());
 	}
 
 	public void dealInitialHand() {
